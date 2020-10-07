@@ -5,7 +5,7 @@ import com.example.taco.data.TacoRepository;
 import com.example.taco.domain.Ingredient;
 import com.example.taco.domain.Order;
 import com.example.taco.domain.Taco;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +17,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@Slf4j
 @Controller
 @SessionAttributes("order")
 @RequestMapping("/design")
 public class DesignTacoController {
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(DesignTacoController.class);
     private final IngredientRepository ingredientRepository;
     private final TacoRepository tacoRepository;
 
