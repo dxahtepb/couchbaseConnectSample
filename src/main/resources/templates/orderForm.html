@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Taco Cloud</title>
+        <link rel="stylesheet" th:href="@{/styles.css}"/>
+    </head>
+    <body>
+        <form method="POST" th:action="@{/orders}" th:object="${order}">
+            <h1>Order your taco creations!</h1>
+
+            <img th:src="@{/images/TacoCloud.png}"/>
+
+            <a id="another" th:href="@{/design}">Design another taco</a><br/>
+
+            <h3>Deliver my taco masterpieces to...</h3>
+            <label for="name">Name: </label>
+            <input id="name" th:field="*{deliveryName}" type="text"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('deliveryName')}"
+                  th:errors="*{name}">Name Error</span>
+            <br/>
+
+            <label for="street">Street address: </label>
+            <input id="street" th:field="*{deliveryStreet}" type="text"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('deliveryStreet')}"
+                  th:errors="*{deliveryStreet}">Street Error</span>
+            <br/>
+
+            <label for="city">City: </label>
+            <input id="city" th:field="*{deliveryCity}" type="text"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('deliveryCity')}"
+                  th:errors="*{deliveryCity}">City Error</span>
+            <br/>
+
+            <label for="state">State: </label>
+            <input id="state" th:field="*{deliveryState}" type="text"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('deliveryState')}"
+                  th:errors="*{deliveryState}">State Error</span>
+            <br/>
+
+            <label for="zip">Zip code: </label>
+            <input id="zip" th:field="*{deliveryZip}" type="text"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('deliveryZip')}"
+                  th:errors="*{deliveryZip}">Zip Code Error</span>
+            <br/>
+
+            <h3>Here's how I'll pay...</h3>
+            <label for="ccNumber">Credit Card #: </label>
+            <input id="ccNumber" th:field="*{ccNumber}" type="text"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('ccNumber')}"
+                  th:errors="*{ccNumber}">CC Num Error</span>
+            <br/>
+
+            <label for="ccExpiration">Expiration: </label>
+            <input id="ccExpiration" th:field="*{ccExpiration}" type="text"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('ccExpiration')}"
+                  th:errors="*{ccExpiration}">CC Expiration Error</span>
+            <br/>
+
+            <label for="ccCVV">CVV: </label>
+            <input id="ccCVV" th:field="*{ccCVV}" type="text"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('ccCVV')}"
+                  th:errors="*{ccCVV}">CC CVV Error</span>
+            <br/>
+
+            <input type="submit" value="Submit order"/>
+        </form>
+    </body>
+</html>
